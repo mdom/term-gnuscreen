@@ -108,7 +108,7 @@ __END__
 
 =head1 NAME
 
-Term::GnuScreen - Control GNU screen via perl
+Term::GnuScreen - control GNU screen
 
 =head1 VERSION
 
