@@ -1,6 +1,6 @@
 package Term::GnuScreen;
 
-use Moose;
+use Moo;
 use Sub::Install qw(install_sub);
 use File::Temp qw(tmpnam);
 use autodie qw(:all);
@@ -49,11 +49,11 @@ BEGIN {
 	}
 }
 
-has session    => (is => 'rw', isa => 'Str' );
-has window     => (is => 'rw', isa => 'Str',  default => '0' );
-has executable => (is => 'rw', isa => 'Str',  default => sub { which("screen") } );
-has create     => (is => 'ro', isa => 'Bool', default => 0 );
-has debugging  => (is => 'rw', isa => 'Bool', default => 0 );
+has session    => (is => 'rw'  );
+has window     => (is => 'rw', default => 0 );
+has executable => (is => 'rw', default => sub { which("screen") } );
+has create     => (is => 'ro', default => 0 );
+has debugging  => (is => 'rw', default => 0 );
 
 sub BUILD {
 	my ($self) = @_;
