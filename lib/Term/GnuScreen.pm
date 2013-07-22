@@ -58,6 +58,7 @@ sub BUILD {
 		}
 		$self->call_screen('-m','-d');
 	}
+	return;
 }
 
 sub send_command {
