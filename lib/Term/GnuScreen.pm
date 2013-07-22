@@ -21,7 +21,7 @@ BEGIN {
 	defutf8 defwrap defwritelock defzombie detach digraph dinfo displays
 	dumptermcap echo encoding escape eval fit flow focus gr 
 	hardcopy_append hardcopydir hardstatus height help history hstatus idle
-	ignorecase info ins_reg kill lastmsg license lockscreen log logfile login
+	ignorecase info ins_reg lastmsg license lockscreen log logfile login
 	logtstamp mapdefault mapnotnext maptimeout markkeys maxwin monitor
 	msgminwait msgwait multiuser nethack next nonblock number obuflimit only
 	other partial password paste pastefont pow_break pow_detach pow_detach_msg
@@ -39,7 +39,7 @@ BEGIN {
 		});
 	}
 
-	my @rcommands = ( qw( bind meta chdir exec umask) );
+	my @rcommands = ( qw( bind kill meta chdir exec umask) );
 
 	for my $name (@rcommands) {
 		install_sub({
@@ -169,9 +169,9 @@ window. You can change session and window with the according object
 methods and construction parameters. Unless listed here, all remaining
 arguments are handed over to screen without further modification.
 
-The five commands bind, meta, chdir, exec and umask are prefixed with a
-I<s> (sbind, smeta, schdir, sexec and sumask) to distinguish them from
-the built-ins with the same name.
+The five commands bind, kill, meta, chdir, exec and umask are prefixed
+with a I<s> (sbind, smeta, schdir, sexec and sumask) to distinguish them
+from the built-ins with the same name.
 
 =head2 call_screen
 
