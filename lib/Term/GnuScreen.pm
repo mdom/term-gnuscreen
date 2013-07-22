@@ -158,6 +158,10 @@ further discussion of this argument.
 Return or set the screen binary to call. Defaults to the binary found
 by C<File::Which::which("screen")>.
 
+=item debugging
+
+If debugging is set to a true value, all commands are printed to STDERR.
+
 =back
 
 =head1 METHODS
