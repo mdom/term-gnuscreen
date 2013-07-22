@@ -9,7 +9,6 @@ my $builder = Module::Build->new(
     dist_version_from => 'lib/Term/GnuScreen.pm',
     requires          => {
         'Moo'               => 0,
-        'Sub::Install'      => 0,
         'File::Temp'        => 0,
         autodie             => 0,
         'File::Which'       => 0,

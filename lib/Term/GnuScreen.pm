@@ -1,7 +1,6 @@
 package Term::GnuScreen;
 
 use Moo;
-use Sub::Install qw(install_sub);
 use File::Temp qw(tmpnam);
 use autodie qw(:all);
 use File::Which;
@@ -10,6 +9,8 @@ use IO::CaptureOutput qw(capture);
 our $VERSION = '0.03';
 
 BEGIN {
+
+	no strict 'refs';
 
 	my @commands = ( qw( acladd aclchg acldel aclgrp aclumask activity addacl allpartial
 	altscreen at attrcolor autodetach autonuke backtick bce bell_msg 
@@ -33,19 +34,13 @@ BEGIN {
 	width windowlist windows wrap writebuf writelock xoff xon zmodem zombie ) );
 
 	for my $name (@commands) {
-		install_sub({
-			code => sub { shift->send_command($name,@_) },
-			as   => $name
-		});
+		*{__PACKAGE__ . "::$name"} = sub { shift->send_command($name,@_) }
 	}
 
 	my @rcommands = ( qw( bind kill meta chdir exec umask) );
 
 	for my $name (@rcommands) {
-		install_sub({
-			code => sub { shift->send_command($name,@_) },
-			as   => "s$name"
-		});
+		*{__PACKAGE__ . "::s$name"} = sub { shift->send_command($name,@_) }
 	}
 }
 
