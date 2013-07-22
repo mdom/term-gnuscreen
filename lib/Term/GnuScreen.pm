@@ -133,45 +133,44 @@ session via its command line interface.
 
 =item session
 
-Sets the name of the screen session to send commands to. If you also
-set C<create> to a true value, this will become the new name of your
+Sets the name of the screen session to which commands are send. If you
+also set C<create> to a true value, this will become the new name of your
 screen session. See I<-S> option for screen for a further discussion of
 this argument.
 
 =item create
 
 If create is set to a true value, a new screen session is created
-and detached automatically. If you do not provide a session name,
-this module generates one by calling C<"term_gnuscreen" . $$
+and detached automatically. If you do not provide a session name via
+I<session>, this module generates one by calling C<"term_gnuscreen" . $$
 . int(rand(10000))>. Settings this value after object creation has no
 effect at the moment.
 
-The newly created session will not be terminated after programm execution.
+The newly created session will not be terminated after program execution.
 
 =item window
 
-Preselects a window to send a command via the a specific window. Defaults
-to 0. See I<-p> option for screen for a further discussion of this
-argument.
+Preselects a window. Defaults to 0. See I<-p> option of screen for a
+further discussion of this argument.
 
 =item executable
 
 Return or set the screen binary to call. Defaults to the binary found
-by File::Which::which.
+by C<File::Which::which("screen")>.
 
 =back
 
 =head1 METHODS
 
 Term::GnuScreen implements all commands as stated in the texinfo document
-shipped with GNU screen. To call a commands, it's send via GNU screens -X
-paramter to the first running screen session and its current window. You
-can change session and window with the according object methods and
-construction paramters. Unless listed here, all remaining arguments are
-handled over to screen without further modification.
+shipped with GNU screen. Whenever you call a command it is send via GNU
+screens -X parameter to the first running screen session and its current
+window. You can change session and window with the according object
+methods and construction parameters. Unless listed here, all remaining
+arguments are handed over to screen without further modification.
 
 The five commands bind, meta, chdir, exec and umask are prefixed with a
-I<s> ( sbind, smeta, schdir, sexec and sumas ) to distinguish them from
+I<s> (sbind, smeta, schdir, sexec and sumask) to distinguish them from
 the built-ins with the same name.
 
 =head2 call_screen
@@ -181,7 +180,7 @@ the command line to call and execute it.
 
 =head2 send_command
 
-Calls call_screen with the I<-X> and all supplied paramters. Most
+Calls call_screen with the I<-X> and all supplied parameters. Most
 functions are implemented by this method.
 
 =head2 hardcopy
@@ -199,14 +198,14 @@ most times) are provided as error message for further investigation.
 
 =head1 AUTHOR
 
-Mario Domgoergen, C<< <dom at math.uni-bonn.de> >>
+Mario Domgoergen E<lt>mdom@cpan.orgE<gt>
 
 =head1 BUGS AND LIMITATIONS
 
 It seems not to be possible to question a specific screen session
 about its state, so this module basically just sends commands to a
-screen session without knowing if the command succeeded or was at least
-syntactically corrent.
+screen session without knowing if the command succeeded or was even
+syntactically correct.
 
 This module needs a lot more testing.
 
