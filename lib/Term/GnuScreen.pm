@@ -62,7 +62,9 @@ sub BUILD {
 
 sub send_command {
 	my ($self,$cmd,@args) = @_;
-	$self->call_screen('-X', $cmd, @args) if $cmd;
+	die "No command supplied while trying to call screen via -X."
+		if !$cmd;
+	return $self->call_screen('-X', $cmd, @args) if $cmd;
 }
 
 sub call_screen {
