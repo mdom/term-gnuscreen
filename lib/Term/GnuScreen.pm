@@ -6,7 +6,7 @@ use autodie qw(:all);
 use File::Which;
 use IO::CaptureOutput qw(capture);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 BEGIN {
 
@@ -105,14 +105,13 @@ sub hardcopy {
 
 __END__
 
-
 =head1 NAME
 
 Term::GnuScreen - control GNU screen
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
@@ -252,7 +251,7 @@ L<screen>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 Mario Domgoergen, all rights reserved.
+Copyright 2013 Mario Domgoergen, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
