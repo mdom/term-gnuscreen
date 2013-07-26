@@ -45,10 +45,10 @@ BEGIN {
 }
 
 has session    => (is => 'rw'  );
-has window     => (is => 'rw', default => 0 );
+has window     => (is => 'rw', default => sub { 0 } );
 has executable => (is => 'rw', default => sub { which("screen") } );
-has create     => (is => 'ro', default => 0 );
-has debugging  => (is => 'rw', default => 0 );
+has create     => (is => 'ro', default => sub { 0 } );
+has debugging  => (is => 'rw', default => sub { 0 } );
 
 sub BUILD {
 	my ($self) = @_;
